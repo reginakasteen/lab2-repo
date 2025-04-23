@@ -1,5 +1,4 @@
-/* Назва класу має бути з великої літери */
-export default class user {
+class User {
     constructor(id, username, email, role, address, phone) {
         this.id = id;
         this.username = username;
@@ -10,17 +9,14 @@ export default class user {
         this.lastLogin = null;
         this.isSuspended = false;
     }
-    /* Коментар не за шаблоном, прибрати */
-    UserStatus(status) { //Визначення статусу користувача
-        if (status === 'active') {
-            this.isSuspended = false;
-        } else if (status === 'inactive') {
-            this.isSuspended = true;
-        }
-    }
 
-    getStatus() {
-        return this.isSuspended ? 'Suspended' : 'Active';
+    updateStatus(status) {
+        const validStatuses = ['active', 'inactive'];
+        if (validStatuses.includes(status)) {
+            this.isSuspended = status === 'inactive';
+        } else {
+            throw new Error('Invalid status');
+        }
     }
 
     isEmailValid() {
@@ -37,14 +33,16 @@ export default class user {
             email: this.email,
             role: this.role,
             lastLogin: this.lastLogin,
-            status: this.UserStatus()
+            status: this.getUserStatus()
         };
+    }
+
+    getUserStatus() {
+        return this.isSuspended ? 'Suspended' : 'Active';
     }
 
     setAddress(address) {
         this.address = address;
     }
-
-    /* Клас не має ніякої функціональності, окрім зберігання */
 }
 
