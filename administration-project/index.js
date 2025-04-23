@@ -1,4 +1,5 @@
 import user from "./user.js";
+/* Користувачів було б доцільніше створювати як окремі константи */
 const users = [
     new user(1, 'alice', 'alice@example.com', 'admin', '1234 Street', '123-4567'),
     new user(2, 'bob', 'bob@example.com', 'user', '5678 Avenue', '234-5678'),
@@ -14,7 +15,11 @@ admin.deactivateUser(2);
 
 admin.suspendUser(3);
 
+
+/* Зайві коментарі прибрати */
 // Оновлення інформації для користувача
+
+/* Код погано читається через звернення через ланцюги */
 admin.getUser(1).setLastLogin(new Date());
 admin.getUser(2).setLastLogin(new Date());
 admin.getUser(3).setLastLogin(new Date());
