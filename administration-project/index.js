@@ -1,41 +1,30 @@
-import user from "./user.js";
-/* Користувачів було б доцільніше створювати як окремі константи */
-const users = [
-    new user(1, 'alice', 'alice@example.com', 'admin', '1234 Street', '123-4567'),
-    new user(2, 'bob', 'bob@example.com', 'user', '5678 Avenue', '234-5678'),
-    new user(3, 'charlie', 'charlie@example.com', 'user', '91011 Road', '345-6789')
-];
+const userManager = new UserManager();
 
-import admin from "./admin.js";
-const admin = new admin(users);
+const alice = new User(1, 'alice', 'alice@example.com', 'admin', '1234 Street', '123-4567');
+const bob = new User(2, 'bob', 'bob@example.com', 'user', '5678 Avenue', '234-5678');
+const charlie = new User(3, 'charlie', 'charlie@example.com', 'user', '91011 Road', '345-6789');
 
-// Виклики для зміни статусу
-admin.activateUser(1);
-admin.deactivateUser(2);
+userManager.addUser(alice);
+userManager.addUser(bob);
+userManager.addUser(charlie);
 
-admin.suspendUser(3);
+userManager.updateUserStatus(1, 'active');
+userManager.updateUserStatus(2, 'inactive');
 
+alice.setLastLogin(new Date());
+bob.setLastLogin(new Date());
+charlie.setLastLogin(new Date());
 
-/* Зайві коментарі прибрати */
-// Оновлення інформації для користувача
+userManager.getActiveUsers().forEach(user => {
+    console.log(user.getUserInfo());
+});
 
-/* Код погано читається через звернення через ланцюги */
-admin.getUser(1).setLastLogin(new Date());
-admin.getUser(2).setLastLogin(new Date());
-admin.getUser(3).setLastLogin(new Date());
-// admin.getUser(4).setLastLogin(new Date());
-// admin.getUser(5).setLastLogin(new Date());
+userManager.getInactiveUsers().forEach(user => {
+    console.log(user.getUserInfo());
+});
 
-// Отримання загальної кількості активних користувачів
-console.log("Active users count: " + admin.getActiveUsersCount());
+console.log('Total users: ', userManager.getUserCount());
 
-// Отримання інформації про всіх користувачів
-console.log(admin.getUser(1).getUserInfo());
-console.log(admin.getUser(2).getUserInfo());
-console.log(admin.getUser(3).getUserInfo());
+userManager.deleteUser(2);
 
-// Видалення
-admin.deleteUser(2);
-
-// Кількість користувачів після видалення
-console.log("Users count after deletion: " + admin.getUsersCount());
+console.log('Total users after deletion: ', userManager.getUserCount());
