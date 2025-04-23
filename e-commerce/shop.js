@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 /* Пропоную розбити клас на кілька менших, дуже багато разних функцій намішано. Плюс підкоригувати оформлення */
->>>>>>> ef9b23be7256c21e76b5b53038e67e277bfa821b
 class Shop {
     constructor() {
         this.items = [];
@@ -10,12 +7,8 @@ class Shop {
     }
 
 
-<<<<<<< HEAD
-
-=======
     
     /* Коментарі та зайві рядки прибрати */
->>>>>>> ef9b23be7256c21e76b5b53038e67e277bfa821b
     // Додати товар
     addProduct(id, name, price, quantity) {this.items.push({ id, name, price, quantity });}
 
@@ -34,10 +27,7 @@ class Shop {
             }
         }
     }
-<<<<<<< HEAD
-=======
     /* Назву функції змінити згідно правил */
->>>>>>> ef9b23be7256c21e76b5b53038e67e277bfa821b
     removeFromCart(id) {this.cart = this.cart.filter(item => item.id !== id);}
 
     /* Що таке Q? Перейменувати функцію */
@@ -81,10 +71,7 @@ class Shop {
 
 
 
-<<<<<<< HEAD
-=======
     /* Змінити оформлення - return має бути з нового рядка. Прибрати зайві пусті рядки*/
->>>>>>> ef9b23be7256c21e76b5b53038e67e277bfa821b
     hasItemsInCart() {return this.cart.length > 0;}
 
 
