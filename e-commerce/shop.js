@@ -1,11 +1,11 @@
-// Жахливо оформлений код для e-commerce з порушеннями норм
-
 class Shop {
     constructor() {
         this.items = [];
         this.discounts = [];
         this.cart = [];
     }
+
+
 
     // Додати товар
     addProduct(id, name, price, quantity) {this.items.push({ id, name, price, quantity });}
@@ -24,7 +24,6 @@ class Shop {
             }
         }
     }
-
     removeFromCart(id) {this.cart = this.cart.filter(item => item.id !== id);}
 
     updateQ(id, quantity) {
@@ -62,7 +61,6 @@ class Shop {
         let finalPrice = this.apply_discount(total);
         console.log(`Загальна сума: ${total} грн, зі знижкою: ${finalPrice} грн`);
     }
-
 
 
 
