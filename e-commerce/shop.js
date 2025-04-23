@@ -1,5 +1,4 @@
-// Жахливо оформлений код для e-commerce з порушеннями норм
-
+/* Пропоную розбити клас на кілька менших, дуже багато разних функцій намішано. Плюс підкоригувати оформлення */
 class Shop {
     constructor() {
         this.items = [];
@@ -7,12 +6,16 @@ class Shop {
         this.cart = [];
     }
 
+
+    
+    /* Коментарі та зайві рядки прибрати */
     // Додати товар
     addProduct(id, name, price, quantity) {this.items.push({ id, name, price, quantity });}
 
     // Додати знижку
     addDiscount(code, percent) {this.discounts.push({ code, percent });}
 
+    /* Назву функції змінити згідно правил */
     itemAdd(id, quantity) {
         let product = this.items.find(item => item.id === id);
         if(product) {
@@ -24,9 +27,10 @@ class Shop {
             }
         }
     }
-
+    /* Назву функції змінити згідно правил */
     removeFromCart(id) {this.cart = this.cart.filter(item => item.id !== id);}
 
+    /* Що таке Q? Перейменувати функцію */
     updateQ(id, quantity) {
         let cartItem = this.cart.find(item => item.id === id);
         if(cartItem) {
@@ -55,8 +59,10 @@ class Shop {
         return this.apply_discount(total);
     }
 
+    /* Коментар прибрати - не за шаблоном */
     // Вивести корзину
     Cart() {
+        /* Цикл неправильно оформлено, рядок задовгий */
         for(let item of this.cart) console.log(`Товар: ${item.name}, Ціна: ${item.price}, Кількість: ${item.quantity}`);
         let total = this.calculate_total();
         let finalPrice = this.apply_discount(total);
@@ -65,11 +71,11 @@ class Shop {
 
 
 
-
+    /* Змінити оформлення - return має бути з нового рядка. Прибрати зайві пусті рядки*/
     hasItemsInCart() {return this.cart.length > 0;}
 
 
-
+    /* Коментар не за шаблоном, назва функції неправильна.*/
     // Оформити замовлення
     checkout() {
         if(!this.hasItemsInCart()) {
@@ -81,14 +87,17 @@ class Shop {
         }
     }
 
+    /* Що таке 0.9? Винести як константу або прибрати */
     applyDiscountToAll() { for (let product of this.items) product.price = product.price * 0.9; }
 
+    /* Мертвий код. Прибрати */
     //hasProduct(id) {return this.items.some(item => item.id === id);}
 }
 
 const shop = new Shop();
 shop.addProduct(1, "Телевізор", 10000, 5);
 shop.addProduct(2, "Ноутбук", 25000, 10);
+/* Також прибрати */
 //shop.addProduct(3, "Мобільний телефон", 15000, 7);
 shop.addDiscount("PROMO123", 10);
 shop.itemAdd(1, 1);

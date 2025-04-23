@@ -1,3 +1,6 @@
+/* Класи було б непогано розбити на кілька окремих файлів */
+
+/* Клас не має жодного методу */
 class BatteryInfo {
     constructor(capacity, current) {
         this.capacity = capacity;
@@ -5,7 +8,10 @@ class BatteryInfo {
     }
 }
 
+/* Клас взагалі можна прибрати, у ньому немає корисних функцій */
 class Logger {
+
+    /* Прибрати, щоб не засмічувати код */
     log(msg) {
         // буде реалізовано пізніше
     }
@@ -15,12 +21,14 @@ class Logger {
     }
 }
 
+/* Пропоную прибрати. Клас розширює Logger, який слід прибрати, при цьому не має корисних методів */
 class AdvancedLogger extends Logger {
     logWithTimestamp(msg) {
         console.log(`[${new Date().toISOString()}] ${msg}`);
     }
 }
 
+/* Цей клас потрібно реорганізувати - занадто багато ролей */
 class PowerStation {
     constructor(batteryCapacity, maxIn, maxOut) {
         this.batteryInfo = new BatteryInfo(batteryCapacity, batteryCapacity);
@@ -98,6 +106,7 @@ class PowerStation {
         }
     }
 
+    /* Не використовується, прибрати */
     unusedMethod() {
         console.log("Невикористаний метод");
     }

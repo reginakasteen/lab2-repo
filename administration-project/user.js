@@ -1,3 +1,4 @@
+/* Назва класу має бути з великої літери */
 export default class user {
     constructor(id, username, email, role, address, phone) {
         this.id = id;
@@ -9,6 +10,7 @@ export default class user {
         this.lastLogin = null;
         this.isSuspended = false;
     }
+    /* Коментар не за шаблоном, прибрати */
     UserStatus(status) { //Визначення статусу користувача
         if (status === 'active') {
             this.isSuspended = false;
@@ -42,4 +44,7 @@ export default class user {
     setAddress(address) {
         this.address = address;
     }
+
+    /* Клас не має ніякої функціональності, окрім зберігання */
 }
+
