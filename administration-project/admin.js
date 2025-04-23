@@ -1,51 +1,39 @@
-/* Назва класу з малої літери */
-/* Взагалі клас часто бере дані з класу User, це порушує інкапсуляцію */
-export default class admin {
-    constructor(users) {
-        this.users = users;
+class UserManager {
+    constructor() {
+        this.users = [];
     }
-    
-    activate(userId) {
-        let user = this.users.find(u => u.id === userId);
-        if (user) user.updateUserStatus('active');
+
+    addUser(user) {
+        if (!(user instanceof User)) {
+            throw new Error('Invalid user');
+        }
+        this.users.push(user);
     }
-    
-    
-    
-    
-    /* Можна об'єднати з попереднім методом та зробити одну функцію для зміни статусу */
-    deactivate(userId) {
-        let user = this.users.find(u => u.id === userId);
-        if (user) user.updateUserStatus('inactive');
-    }
-    
-    
+
     deleteUser(userId) {
         this.users = this.users.filter(u => u.id !== userId);
     }
-    
-    get(userId) {
-        return this.users.find(u => u.id === userId);
+
+    updateUserStatus(userId, status) {
+        const user = this.getUserById(userId);
+        if (user) {
+            user.updateStatus(status);
+        }
     }
-    
-    /* З назв не зрозуміло, що виконують функції getCount, getCount2, getCount3 */
-    getCount() {
-        return this.users.filter(user => user.getUserStatus() === 'Active').length;
+
+    getUserById(userId) {
+        return this.users.find(user => user.id === userId);
     }
-    
-    getCount2() {
-        return this.users.filter(user => user.getUserStatus() === 'Suspended').length;
+
+    getActiveUsers() {
+        return this.users.filter(user => user.getUserStatus() === 'Active');
     }
-    
-    getCount3() {
+
+    getInactiveUsers() {
+        return this.users.filter(user => user.getUserStatus() === 'Suspended');
+    }
+
+    getUserCount() {
         return this.users.length;
     }
-    
-    /* Дублює функцію deactivate, слід видалити*/
-    suspend(userId) {
-        let user = this.users.find(u => u.id === userId);
-        if(user) user.updateUserStatus('inactive');
-    }
-    }
-    
-    
+}
